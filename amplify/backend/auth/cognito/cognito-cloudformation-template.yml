@@ -234,11 +234,11 @@ Resources:
       Code:
         ZipFile: !Join 
           - |+
-          - - 'const response = require(''cfn-response'');'
-            - 'const aws = require(''aws-sdk'');'
-            - 'const identity = new aws.CognitoIdentityServiceProvider();'
-            - 'exports.handler = (event, context, callback) => {'
-            - ' if (event.RequestType == ''Delete'') { '
+          - - 'const { CognitoIdentityServiceProvider } = require("@aws-sdk/client-cognito-identity-service-provider");'
+            - 'const { send, SUCCESS, FAILED } = require("cfn-response");'
+            - 'const identity = new CognitoIdentityServiceProvider();'
+            - 'exports.handler = async (event, context) => {'
+            - ' if (event.RequestType == 'Delete') { '
             - '   response.send(event, context, response.SUCCESS, {})'
             - ' }'
             - ' if (event.RequestType == ''Update'' || event.RequestType == ''Create'') {'
@@ -256,7 +256,7 @@ Resources:
             - ' }'
             - '};'
       Handler: index.handler
-      Runtime: nodejs16.x
+      Runtime: nodejs10.x
       Timeout: '300'
       Role: !GetAtt 
         - UserPoolClientRole
