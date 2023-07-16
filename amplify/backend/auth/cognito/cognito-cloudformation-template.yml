@@ -234,29 +234,28 @@ Resources:
       Code:
         ZipFile: !Join 
           - |+
-          - - 'const response = require(''cfn-response'');'
-            - 'const aws = require(''aws-sdk'');'
-            - 'const identity = new aws.CognitoIdentityServiceProvider();'
-            - 'exports.handler = (event, context, callback) => {'
+          - - 'const { CognitoIdentityServiceProvider } = require("@aws-sdk/client-cognito-identity-service-provider");'
+            - 'const { send, SUCCESS, FAILED } = require("cfn-response");'
+            - 'const identity = new CognitoIdentityServiceProvider();'
+            - 'exports.handler = async (event, context) => {'
             - ' if (event.RequestType == ''Delete'') { '
-            - '   response.send(event, context, response.SUCCESS, {})'
+            - '   return send(event, context, SUCCESS, {});'
             - ' }'
             - ' if (event.RequestType == ''Update'' || event.RequestType == ''Create'') {'
             - '   const params = {'
             - '     ClientId: event.ResourceProperties.clientId,'
             - '     UserPoolId: event.ResourceProperties.userpoolId'
             - '   };'
-            - '   identity.describeUserPoolClient(params).promise()'
-            - '     .then((res) => {'
-            - '       response.send(event, context, response.SUCCESS, {''appSecret'': res.UserPoolClient.ClientSecret});'   
-            - '     })'
-            - '     .catch((err) => {'
-            - '       response.send(event, context, response.FAILED, {err});'
-            - '     });'
+            - '   try {'
+            - '     const res = await identity.describeUserPoolClient(params);'
+            - '     return send(event, context, SUCCESS, { ''appSecret'': res.UserPoolClient.ClientSecret });'
+            - '   } catch (err) {'
+            - '     return send(event, context, FAILED, { err });'
+            - '   }'
             - ' }'
             - '};'
       Handler: index.handler
-      Runtime: nodejs18.x
+      Runtime: nodejs17.x
       Timeout: '300'
       Role: !GetAtt 
         - UserPoolClientRole
