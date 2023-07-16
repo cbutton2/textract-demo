@@ -49,7 +49,7 @@ deploy.processing: ##=> Deploy OCR processing service using SAM
 				CognitoUserPoolId=$(COGNITO_USER_POOL_ID)
 
 export.parameter:
-	$(info [+] Adding new parameter named "${NAME}")
+	$(info [+] Adding new parameter named "${NAME}" "${VALUE}")
 	aws ssm put-parameter \
 		--name "$${NAME}" \
 		--type "String" \
