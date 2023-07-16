@@ -234,9 +234,9 @@ Resources:
       Code:
         ZipFile: !Join 
           - |+
-          - - 'const { CognitoIdentityServiceProvider } = require("@aws-sdk/client-cognito-identity-service-provider");'
+          - - 'const { CognitoIdentityProviderClient } = require("@aws-sdk/client-cognito-identity-provider");'
             - 'const { send, SUCCESS, FAILED } = require("cfn-response");'
-            - 'const identity = new CognitoIdentityServiceProvider();'
+            - 'const identity = new CognitoIdentityProviderClient();'
             - 'exports.handler = async (event, context) => {'
             - ' if (event.RequestType == ''Delete'') { '
             - '   return send(event, context, SUCCESS, {});'
