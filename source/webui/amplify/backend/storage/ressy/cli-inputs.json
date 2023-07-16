@@ -1,0 +1,18 @@
+{
+  "resourceName": "ressy",
+  "policyUUID": "9b53bc15",
+  "bucketName": "webuif641bb0b1c0943e196f1291c62a0038f",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

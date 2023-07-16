@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-webui-dev-225037-authRole",
+      "UnauthRoleArn": "arn:aws:iam::531134410752:role/amplify-webui-dev-225037-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::531134410752:role/amplify-webui-dev-225037-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-webui-dev-225037-deployment",
+      "UnauthRoleName": "amplify-webui-dev-225037-unauthRole",
+      "StackName": "amplify-webui-dev-225037",
+      "StackId": "arn:aws:cloudformation:us-east-1:531134410752:stack/amplify-webui-dev-225037/b1c08a80-239c-11ee-9b94-12ef95bdaa75",
+      "AmplifyAppId": "dwqomulpose9b"
+    },
+    "categories": {
+      "auth": {
+        "webuiba010288": {}
+      },
+      "storage": {
+        "ressy": {}
+      }
+    }
+  }
+}
